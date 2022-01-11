@@ -1,14 +1,14 @@
 import UIKit
 
 class AddProductViewController: UIViewController, UITextFieldDelegate {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Car"
         view.backgroundColor = .darkGray
         configure()
     }
-    
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title:*"
@@ -17,7 +17,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         label.textColor = .white
         return label
     }()
-    
+
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Description:"
@@ -26,7 +26,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         label.textColor = .white
         return label
     }()
-    
+
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.text = "Price:*"
@@ -35,7 +35,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         label.textColor = .white
         return label
     }()
-    
+
     lazy var modelLabel: UILabel = {
         let label = UILabel()
         label.text = "Model:*"
@@ -44,7 +44,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         label.textColor = .white
         return label
     }()
-    
+
     lazy var vinLabel: UILabel = {
         let label = UILabel()
         label.text = "VIN:*"
@@ -53,52 +53,52 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         label.textColor = .white
         return label
     }()
-    
+
     lazy var titleTF: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .white
-        tf.layer.cornerRadius = 5
-        tf.textColor = .black
-        tf.autocorrectionType = UITextAutocorrectionType.no
-        return tf
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.textColor = .black
+        textField.autocorrectionType = UITextAutocorrectionType.no
+        return textField
     }()
-    
+
     lazy var descriptionTF: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .white
-        tf.layer.cornerRadius = 5
-        tf.textColor = .black
-        tf.autocorrectionType = UITextAutocorrectionType.no
-        return tf
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.textColor = .black
+        textField.autocorrectionType = UITextAutocorrectionType.no
+        return textField
     }()
-    
+
     lazy var priceTF: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .white
-        tf.layer.cornerRadius = 5
-        tf.textColor = .black
-        tf.autocorrectionType = UITextAutocorrectionType.no
-        return tf
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.textColor = .black
+        textField.autocorrectionType = UITextAutocorrectionType.no
+        return textField
     }()
-    
+
     lazy var modelTF: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .white
-        tf.layer.cornerRadius = 5
-        tf.textColor = .black
-        tf.autocorrectionType = UITextAutocorrectionType.no
-        return tf
+        let         textField = UITextField()
+                textField.backgroundColor = .white
+                textField.layer.cornerRadius = 5
+                textField.textColor = .black
+                textField.autocorrectionType = UITextAutocorrectionType.no
+        return         textField
     }()
-    
+
     lazy var vinTF: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .white
-        tf.layer.cornerRadius = 5
-        tf.textColor = .black
-        tf.autocorrectionType = UITextAutocorrectionType.no
-        return tf
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.textColor = .black
+        textField.autocorrectionType = UITextAutocorrectionType.no
+        return textField
     }()
-    
+
     lazy var submitButton: UIButton = {
         let button = UIButton()
         button.setTitle("Submit", for: .normal)
@@ -111,13 +111,13 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension AddProductViewController {
-    
+
     internal func configure() {
         addSubviews()
         configureConstraints()
         configureDelegates()
     }
-    
+
     @objc func submitButtonTapped() {
         print("post request where we add new car")
         if let title = titleTF.text,
@@ -128,12 +128,12 @@ extension AddProductViewController {
             print(title, description, price, model, vin)
         }
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true
     }
-    
+
     private func switchBasedNextTextField(_ textField: UITextField) {
         switch textField {
         case self.titleTF:
@@ -148,45 +148,45 @@ extension AddProductViewController {
             self.vinTF.resignFirstResponder()
         }
     }
-    
+
     private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(titleTF)
-        
+
         view.addSubview(descriptionLabel)
         view.addSubview(descriptionTF)
-        
+
         view.addSubview(priceLabel)
         view.addSubview(priceTF)
-        
+
         view.addSubview(modelLabel)
         view.addSubview(modelTF)
-        
+
         view.addSubview(vinLabel)
         view.addSubview(vinTF)
-        
+
         view.addSubview(submitButton)
     }
-    
+
     private func configureConstraints() {
         setTitleLabelConstraints()
         setTitleTFConstraints()
-        
+
         setDescriptionLabelConstraints()
         setDescriptionTFConstraints()
-        
+
         setPriceLabelConstraints()
         setPriceTFConstraints()
-        
+
         setModelLabelConstraints()
         setModelTFConstraints()
-        
+
         setVinLabelConstraints()
         setVinTFConstraints()
-        
+
         setSubmitButtonConstraints()
     }
-    
+
     private func configureDelegates() {
         self.titleTF.delegate = self
         self.descriptionTF.delegate = self
@@ -194,7 +194,7 @@ extension AddProductViewController {
         self.modelTF.delegate = self
         self.vinTF.delegate = self
     }
-    
+
     // Title Configuration
     private func setTitleLabelConstraints() {
         let margins = view.layoutMarginsGuide
@@ -204,7 +204,7 @@ extension AddProductViewController {
         titleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setTitleTFConstraints() {
         let margins = view.layoutMarginsGuide
         titleTF.translatesAutoresizingMaskIntoConstraints = false
@@ -213,7 +213,7 @@ extension AddProductViewController {
         titleTF.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: -10).isActive = true
         titleTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     // Description Configuration
     private func setDescriptionLabelConstraints() {
         let margins = view.layoutMarginsGuide
@@ -223,7 +223,7 @@ extension AddProductViewController {
         descriptionLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         descriptionLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setDescriptionTFConstraints() {
         let margins = view.layoutMarginsGuide
         descriptionTF.translatesAutoresizingMaskIntoConstraints = false
@@ -232,7 +232,7 @@ extension AddProductViewController {
         descriptionTF.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: -10).isActive = true
         descriptionTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     // Price Configuration
     private func setPriceLabelConstraints() {
         let margins = view.layoutMarginsGuide
@@ -242,7 +242,7 @@ extension AddProductViewController {
         priceLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setPriceTFConstraints() {
         let margins = view.layoutMarginsGuide
         priceTF.translatesAutoresizingMaskIntoConstraints = false
@@ -251,7 +251,7 @@ extension AddProductViewController {
         priceTF.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: -10).isActive = true
         priceTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     // Model Configuration
     private func setModelLabelConstraints() {
         let margins = view.layoutMarginsGuide
@@ -261,7 +261,7 @@ extension AddProductViewController {
         modelLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         modelLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setModelTFConstraints() {
         let margins = view.layoutMarginsGuide
         modelTF.translatesAutoresizingMaskIntoConstraints = false
@@ -270,7 +270,7 @@ extension AddProductViewController {
         modelTF.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: -10).isActive = true
         modelTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     // Vin Configuration
     private func setVinLabelConstraints() {
         let margins = view.layoutMarginsGuide
@@ -280,7 +280,7 @@ extension AddProductViewController {
         vinLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         vinLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setVinTFConstraints() {
         let margins = view.layoutMarginsGuide
         vinTF.translatesAutoresizingMaskIntoConstraints = false
@@ -289,7 +289,7 @@ extension AddProductViewController {
         vinTF.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: -10).isActive = true
         vinTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     private func setSubmitButtonConstraints() {
         let margins = view.layoutMarginsGuide
         submitButton.translatesAutoresizingMaskIntoConstraints = false

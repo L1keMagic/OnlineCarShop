@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23296BD3278B088200F4EBCB /* TableDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23296BD2278B088200F4EBCB /* TableDetailsViewController.swift */; };
+		05CCBF1D5619A26F686C5E80 /* Pods_OnlineShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B6D124EFC9BFCF8BD02B35 /* Pods_OnlineShop.framework */; };
 		233DCD9E2785D0AD007EA6C0 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233DCD9D2785D0AD007EA6C0 /* ApiManager.swift */; };
 		23B99CE5278985F2007355B0 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B99CE4278985F2007355B0 /* CartViewController.swift */; };
 		23B99CE72789BCF9007355B0 /* CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B99CE62789BCF9007355B0 /* CurrencyFormatting.swift */; };
@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23296BD2278B088200F4EBCB /* TableDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailsViewController.swift; sourceTree = "<group>"; };
+		0A05DCFD390823AFE205EEC9 /* Pods-OnlineShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineShop.debug.xcconfig"; path = "Target Support Files/Pods-OnlineShop/Pods-OnlineShop.debug.xcconfig"; sourceTree = "<group>"; };
 		233DCD9D2785D0AD007EA6C0 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		23B99CE4278985F2007355B0 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		23B99CE62789BCF9007355B0 /* CurrencyFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatting.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		23FB26F82784456500C33B95 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		23FB270327848A4100C33B95 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		23FB270627848C5900C33B95 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		96B6D124EFC9BFCF8BD02B35 /* Pods_OnlineShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA52F26EDB2414631AB6C1E0 /* Pods-OnlineShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineShop.release.xcconfig"; path = "Target Support Files/Pods-OnlineShop/Pods-OnlineShop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,20 +59,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CCBF1D5619A26F686C5E80 /* Pods_OnlineShop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23296BD1278B085C00F4EBCB /* TableDetaitedInfo */ = {
-			isa = PBXGroup;
-			children = (
-				23296BD2278B088200F4EBCB /* TableDetailsViewController.swift */,
-			);
-			path = TableDetaitedInfo;
-			sourceTree = "<group>";
-		};
 		233DCD9A2785CF99007EA6C0 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +104,8 @@
 			children = (
 				23FB26D427833A6A00C33B95 /* OnlineShop */,
 				23FB26D327833A6A00C33B95 /* Products */,
+				95D68C8E81FB7481D136EB53 /* Pods */,
+				D5BB30B24978FD061BA4BF25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +120,6 @@
 		23FB26D427833A6A00C33B95 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
-				23296BD1278B085C00F4EBCB /* TableDetaitedInfo */,
 				23B99CE3278985D6007355B0 /* Cart */,
 				233DCD9A2785CF99007EA6C0 /* API */,
 				23FB270527848C3900C33B95 /* DetailedInfo */,
@@ -210,6 +206,23 @@
 			path = DetailedInfo;
 			sourceTree = "<group>";
 		};
+		95D68C8E81FB7481D136EB53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A05DCFD390823AFE205EEC9 /* Pods-OnlineShop.debug.xcconfig */,
+				CA52F26EDB2414631AB6C1E0 /* Pods-OnlineShop.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D5BB30B24978FD061BA4BF25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96B6D124EFC9BFCF8BD02B35 /* Pods_OnlineShop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,6 +230,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23FB26E627833A6B00C33B95 /* Build configuration list for PBXNativeTarget "OnlineShop" */;
 			buildPhases = (
+				23F84C1C278E058100E40FDC /* ShellScript */,
+				3C5900206EBE88C0726E7AD9 /* [CP] Check Pods Manifest.lock */,
 				23FB26CE27833A6A00C33B95 /* Sources */,
 				23FB26CF27833A6A00C33B95 /* Frameworks */,
 				23FB26D027833A6A00C33B95 /* Resources */,
@@ -275,12 +290,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23F84C1C278E058100E40FDC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		3C5900206EBE88C0726E7AD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OnlineShop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		23FB26CE27833A6A00C33B95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23296BD3278B088200F4EBCB /* TableDetailsViewController.swift in Sources */,
 				23FB26EC27833DBF00C33B95 /* TabBarViewController.swift in Sources */,
 				23FB26F92784456500C33B95 /* Products.swift in Sources */,
 				23FB26F627836C8D00C33B95 /* ProductCell.swift in Sources */,
@@ -431,6 +487,7 @@
 		};
 		23FB26E727833A6B00C33B95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A05DCFD390823AFE205EEC9 /* Pods-OnlineShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -450,6 +507,7 @@
 		};
 		23FB26E827833A6B00C33B95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA52F26EDB2414631AB6C1E0 /* Pods-OnlineShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

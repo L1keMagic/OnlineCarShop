@@ -8,7 +8,7 @@ struct Product: Codable {
     let model, vin: String
     let imageURL: String?
     let isAddedToCart: Bool?
-    
+
     enum CodingKeys: String, CodingKey {
         case id, title
         case productDescription = "description"

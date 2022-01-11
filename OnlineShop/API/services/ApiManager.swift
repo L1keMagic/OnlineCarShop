@@ -2,30 +2,30 @@ import Foundation
 
 enum ApiType {
     case getProducts
-    
+
     var baseURL: String {
         return "localhost"
     }
-    
-    var headers: [String : String] {
+
+    var headers: [String: String] {
         switch self {
         default:
             return [ : ]
         }
     }
-    
+
     var path: String {
         switch self {
         case .getProducts:
             return "Products"
         }
     }
-    
+
     var request: URLRequest {
         let url = URL(string: path, relativeTo: URL(string: baseURL)!)!
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
-        
+
         switch self {
         default:
             request.httpMethod = "GET"
@@ -36,7 +36,7 @@ enum ApiType {
 
 class ApiManager {
     static let shared = ApiManager()
-    
+
     func getProducts(completion: @escaping (Products) -> Void) {
         let request = ApiType.getProducts.request
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -48,7 +48,7 @@ class ApiManager {
         }
         task.resume()
     }
-    
+
     func getProductsJson() -> Products {
         let decoder = JSONDecoder()
         guard
@@ -60,7 +60,7 @@ class ApiManager {
         }
         return products
     }
-    
+
     func getCartProductsJson() -> Products {
         let decoder = JSONDecoder()
         guard
@@ -70,7 +70,6 @@ class ApiManager {
         else {
             fatalError()
         }
-        
         return products.filter { $0.isAddedToCart == true }
     }
 }

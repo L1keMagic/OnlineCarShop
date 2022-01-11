@@ -82,13 +82,12 @@ extension DetailsViewController {
         print("put request where isAddedToCart activated")
     }
     
-    
-    internal func configure(){
+    internal func configure() {
         addSubviews()
         configureConstraints()
     }
     
-    private func addSubviews(){
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(priceLabel)
@@ -108,7 +107,7 @@ extension DetailsViewController {
         setAddToCartButtonConstraints()
     }
     
-    //MARK: - Set Constraints
+    // MARK: - Set Constraints
     
     private func setTitleConstraints() { // #1
         let margins = view.layoutMarginsGuide

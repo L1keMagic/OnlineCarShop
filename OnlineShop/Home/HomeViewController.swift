@@ -38,7 +38,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let dest = DetailsViewController()
-//        let dest = TableDetailsViewController()
         dest.product = products[indexPath.row]
         self.navigationController?.show(dest, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -49,11 +48,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier) as! ProductCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier) as? ProductCell
         let product = products[indexPath.row]
-        cell.set(product: product)
+        cell!.set(product: product)
         
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

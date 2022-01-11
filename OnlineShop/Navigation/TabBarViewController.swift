@@ -30,7 +30,7 @@ class TabBarViewController: UITabBarController {
             vc: SettingsViewController(),
             title: "Settings",
             selected: UIImage(systemName: "gearshape.2")!,
-            unselected: UIImage(systemName:"gearshape.2.fill")!)
+            unselected: UIImage(systemName: "gearshape.2.fill")!)
         
         viewControllers = [homeVC, addNewVC, cartVC, settingsVC]
     }
