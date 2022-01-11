@@ -1,0 +1,42 @@
+[
+  {
+    "id": 2,
+    "title": "bmw x5 series",
+    "description": "I am selling almost new bmw",
+    "price": 5000000,
+    "model": "X5",
+    "vin": "13RUS582341H94184",
+    "imageUrl": "https://images.wallpaperscraft.com/image/single/porsche_911_carrera_rsr_porsche_sports_car_139640_1600x900.jpg",
+    "isAddedToCart": false
+  },
+  {
+    "id": 3,
+    "title": "audi K5 2016",
+    "description": "the best audi in the world When we constantly sweat the small stuff it has implications on our happiness, the quality of our relationships and, if we aren’t careful, it can even impact the outcome of really important decisions... like choosing where to invest our money or deciding if you should take that job in a new city. Let’s talk about decision fatigue and how it might be ruining your life.",
+    "price": 3500000,
+    "model": "K5",
+    "vin": "123123123qwe123q1",
+    "imageUrl": "https://images.wallpaperscraft.com/image/single/bmw_car_bumper_191131_1600x900.jpg",
+    "isAddedToCart": false
+  },
+  {
+    "id": 4,
+    "title": "mercedes amg gt",
+    "description": "the best mers in the world",
+    "price": 10000000,
+    "model": "amg 200",
+    "vin": "123123123qwe123g1",
+    "imageUrl": "https://images.wallpaperscraft.com/image/single/bmw_vision_efficientdynamics_concept_100297_1600x900.jpg",
+    "isAddedToCart": true
+  },
+  {
+    "id": 5,
+    "title": "VAZ-2114",
+    "description": null,
+    "price": 70000,
+    "model": "2114",
+    "vin": "434343",
+    "imageUrl": "https://images.wallpaperscraft.com/image/single/bmw_e34_red_cars_side_view_sports_96487_1600x900.jpg",
+    "isAddedToCart": false
+  }
+]
