@@ -37,8 +37,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let dest = DetailsViewController()
-        dest.product = products[indexPath.row]
+        let dest = DetailsViewController(product: products[indexPath.row])
         self.navigationController?.show(dest, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
