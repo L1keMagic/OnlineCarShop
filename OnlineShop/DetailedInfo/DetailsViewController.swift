@@ -16,11 +16,48 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
-        configure()
+        setSubViews()
+        setConstraints()
     }
+    
+    private func setSubViews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(priceLabel)
+        contentView.addSubview(modelLabel)
+        contentView.addSubview(vinLabel)
+        contentView.addSubview(imageView)
+        view.addSubview(addToCartButton)
+    }
+    
+    private func setConstraints() {
+        setScrollViewConstraints()
+        setTitleConstraints()
+        setDescriptionConstraints()
+        setPriceConstraints()
+        setModelConstraints()
+        setVinConstraints()
+        setImageConstraints()
+        setAddToCartButtonConstraints()
+    }
+    
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Title: \(product.title)"
         label.font = UIFont.boldSystemFont(ofSize: 24.0)
         label.numberOfLines = 0
@@ -31,6 +68,7 @@ class DetailsViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Description: \(product.productDescription ?? "")"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -41,6 +79,7 @@ class DetailsViewController: UIViewController {
     
     lazy var priceLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Price: \(product.price.asLocaleCurrency)"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -50,6 +89,7 @@ class DetailsViewController: UIViewController {
     
     lazy var modelLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Model: \(product.model)"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -59,6 +99,7 @@ class DetailsViewController: UIViewController {
     
     lazy var vinLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "VIN: \(product.vin)"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -68,6 +109,7 @@ class DetailsViewController: UIViewController {
     
     lazy var imageView: UIImageView = {
         let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
         iv.setCustomImage(product.imageURL)
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 30
@@ -76,100 +118,111 @@ class DetailsViewController: UIViewController {
     
     lazy var addToCartButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add to Cart", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
         button.backgroundColor = .white
+        button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
         return button
     }()
-}
-
-extension DetailsViewController {
     
     @objc func addToCartButtonTapped() {
         print("put request where isAddedToCart activated")
     }
     
-    internal func configure() {
-        addSubviews()
-        configureConstraints()
-    }
-    
-    private func addSubviews() {
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(priceLabel)
-        view.addSubview(modelLabel)
-        view.addSubview(vinLabel)
-        view.addSubview(imageView)
-        view.addSubview(addToCartButton)
-    }
-    
-    private func configureConstraints() {
-        setTitleConstraints()
-        setDescriptionConstraints()
-        setPriceConstraints()
-        setModelConstraints()
-        setVinConstraints()
-        setImageConstraints()
-        setAddToCartButtonConstraints()
-    }
-    
     // MARK: - Set Constraints
     
+    private func setScrollViewConstraints() {
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: addToCartButton.layoutMarginsGuide.topAnchor, constant: -20),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor)
+        ])
+        
+        let contentViewCenterY = contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+        contentViewCenterY.priority = .defaultLow
+        
+        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        
+        NSLayoutConstraint.activate([
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentViewCenterY,
+            contentViewHeight
+        ])
+    }
+    
     private func setTitleConstraints() { // #1
-        let margins = view.layoutMarginsGuide
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)
+        ])
     }
     
     private func setDescriptionConstraints() { // #5
-        let margins = view.layoutMarginsGuide
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
-        descriptionLabel.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: vinLabel.bottomAnchor, constant: 20).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            descriptionLabel.leftAnchor.constraint(equalTo: margins.leftAnchor),
+            descriptionLabel.rightAnchor.constraint(equalTo: margins.rightAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: vinLabel.bottomAnchor, constant: 20)
+        ])
     }
     
     private func setPriceConstraints() { // #2
-        let margins = view.layoutMarginsGuide
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            priceLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20)
+        ])
     }
     
     private func setModelConstraints() { // #3
-        let margins = view.layoutMarginsGuide
-        modelLabel.translatesAutoresizingMaskIntoConstraints = false
-        modelLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        modelLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 20).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            modelLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            modelLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 20)
+        ])
     }
     
     private func setVinConstraints() { // #4
-        let margins = view.layoutMarginsGuide
-        vinLabel.translatesAutoresizingMaskIntoConstraints = false
-        vinLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        vinLabel.topAnchor.constraint(equalTo: modelLabel.bottomAnchor, constant: 20).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            vinLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            vinLabel.topAnchor.constraint(equalTo: modelLabel.bottomAnchor, constant: 20)
+        ])
     }
     
     private func setImageConstraints() { // #0
-        let margins = view.layoutMarginsGuide
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20).isActive = true
-        imageView.widthAnchor.constraint(equalTo: margins.widthAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 1/3).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
+            imageView.widthAnchor.constraint(equalTo: margins.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4),
+            imageView.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        ])
+        
     }
     
     private func setAddToCartButtonConstraints() {
         let margins = view.layoutMarginsGuide
-        addToCartButton.translatesAutoresizingMaskIntoConstraints = false
-        addToCartButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -20).isActive = true
-        addToCartButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        addToCartButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        addToCartButton.widthAnchor.constraint(equalTo: margins.widthAnchor).isActive = true
-        addToCartButton.layer.cornerRadius = 20
+        NSLayoutConstraint.activate([
+            addToCartButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -20),
+            addToCartButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            addToCartButton.heightAnchor.constraint(equalToConstant: 60),
+            addToCartButton.widthAnchor.constraint(equalTo: margins.widthAnchor)
+        ])
     }
+    
 }

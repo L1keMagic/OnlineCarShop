@@ -15,6 +15,7 @@ class ProductCell: UITableViewCell {
     
     lazy var productImageView: UIImageView = {
         let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 10
         iv.clipsToBounds = true
         return iv
@@ -22,6 +23,7 @@ class ProductCell: UITableViewCell {
     
     lazy var productTitleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 22.0)
@@ -29,7 +31,8 @@ class ProductCell: UITableViewCell {
     }()
     
     lazy var productPriceLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -62,24 +65,28 @@ extension ProductCell {
     }
     
     private func setImageViewConstraints() {
-        productImageView.translatesAutoresizingMaskIntoConstraints = false
-        productImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        productImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        productImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        productImageView.widthAnchor.constraint(equalTo: productImageView.heightAnchor, multiplier: 16/9).isActive = true
+        NSLayoutConstraint.activate([
+            productImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            productImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            productImageView.heightAnchor.constraint(equalToConstant: 80),
+            productImageView.widthAnchor.constraint(equalTo: productImageView.heightAnchor, multiplier: 16/9)
+        ])
     }
     
     private func setTitleLabelConstraints() {
-        productTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        productTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20).isActive = true
-        productTitleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        productTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+        NSLayoutConstraint.activate([
+            productTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
+            productTitleLabel.heightAnchor.constraint(equalToConstant: 40),
+            productTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
+        ])
     }
     
     private func setPriceLabelConstraints() {
-        productPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        productPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20).isActive = true
-        productPriceLabel.topAnchor.constraint(equalTo: productTitleLabel.bottomAnchor).isActive = true
-        productPriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+        NSLayoutConstraint.activate([
+            productPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 20),
+            productPriceLabel.topAnchor.constraint(equalTo: productTitleLabel.bottomAnchor),
+            productPriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
+        ])
+        
     }
 }
