@@ -6,7 +6,6 @@ extension UITabBarController {
         let viewController = vc
         let navController = UINavigationController(rootViewController: viewController)
         navController.title = title
-        //        navController.navigationBar.prefersLargeTitles = true
         navController.tabBarItem.image = unselected
         navController.tabBarItem.selectedImage = selected
         return navController
